@@ -292,12 +292,11 @@ void func_us_801D5E90(Entity* self) {
     } break;
 
     case 0x5:
-        s4 = self->step_s;
-        switch (s4) {
+        switch (self->step_s) {
         case 0:
             self->ext.et_801D5E90.unk90 = 0;
-            s1 = (GetSideToPlayer() & 0x1) ^ 0x1;
-            if (self->facingLeft == s1) {
+            s4 = (GetSideToPlayer() & 0x1) ^ 0x1;
+            if (self->facingLeft == s4) {
                 SetSubStep(2);
             } else {
             case 1:
@@ -341,8 +340,8 @@ void func_us_801D5E90(Entity* self) {
         break;
 
     case 0xFF:
-        FntPrint("????", self->animCurFrame);
-        if (g_pads[1].pressed & 0x8000) {
+        FntPrint("charal %x\n", self->animCurFrame);
+        if (g_pads[1].pressed & PAD_SQUARE) {
             if (self->params) {
                 break;
             }
@@ -351,7 +350,7 @@ void func_us_801D5E90(Entity* self) {
         } else {
             self->params = 0;
         }
-        if (g_pads[1].pressed & 0x20) {
+        if (g_pads[1].pressed & PAD_CIRCLE) {
             if (self->step_s) {
                 break;
             }
